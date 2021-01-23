@@ -22,9 +22,10 @@
     // 🐨 Please re-implement the regular document.createElement code above
     // with these React API calls
     // 💰 The example in the markdown file should be a good hint for you.
-    const span1 = React.createElement('span', {children: 'Hello '});
+    const span1 = React.createElement('span', null, 'Hello');
+    // const span1 = React.createElement('span', {}, 'Hello'); // you can pass empty props object and ...rest will be the children
     const span2 = React.createElement('span', {children: 'World'});
-    const containerProps = {children: [span1, span2], className: 'container'};
+    const containerProps = {children: [span1, ' ', span2], className: 'container'}; // this gives a warning, apparently, if we pass them as ...rest it doesnt - to be explained
     const container = React.createElement('div', containerProps);
     ReactDOM.render(container, rootElement);
   </script>
