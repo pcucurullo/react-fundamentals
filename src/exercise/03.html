@@ -24,9 +24,8 @@
     // // 📜 You can learn the differences between JSX and HTML syntax from the React docs here:
     // // https://reactjs.org/docs/dom-elements.html#differences-in-attributes
     //
-    const className = 'container';
-    const children = 'Hello World';
-    const element = <div className={className}>{children}</div>;
+    const props = {className: 'container', children: 'Hello World'};
+    const element = <div {...props} />;
     ReactDOM.render(element, document.getElementById('root'));
 
   </script>
