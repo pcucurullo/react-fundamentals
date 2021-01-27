@@ -20,7 +20,7 @@ function UsernameForm({onSubmitUsername}) {
   // to do so, set the value of 'htmlFor' prop of the label to the id of input
 
   const usernameInput = React.useRef();
-  const [error, setError] = React.useState();
+  const [usernameValue, setUsernameValue] = React.useState();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -28,19 +28,17 @@ function UsernameForm({onSubmitUsername}) {
   }
 
   const handleChange = (event) => {
-    const value = event.target.value;
-    const isValid = value === value.toLowerCase();
-    setError(isValid ? null : 'Username must be lower case');
+    const {value} = event.target;
+    setUsernameValue(value.toLowerCase());
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="username">Username:</label>
-        <input type="text" id="username" ref={usernameInput} onChange={handleChange}/>
+        <input type="text" id="username" ref={usernameInput} onChange={handleChange} value={usernameValue}/>
       </div>
-      <p style={{color: 'red'}} role="alert">{error}</p>
-      <button type="submit" disabled={Boolean(error)}>Submit</button>
+      <button type="submit">Submit</button>
     </form>
   )
 }
@@ -59,4 +57,5 @@ Associating labels to the actual input is necessary for screen readers.
 useRef creates an immutable object that saves in current the DOM element itself which is maintained throughout the lifetime of the rendered element. It will be associated to a DOM element via the ref property
 useState creates a state object that can be manipulated live.
 When using a non-boolean as conditional to show/hide or enable/disable parse with Boolean() to be safe.
+If I use React's value prop it ensures that the actual DOM value is always what I set in the prop.
 * */
