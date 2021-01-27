@@ -56,5 +56,6 @@ Associating labels to the actual input is necessary for screen readers.
 useRef creates an immutable object that saves in current the DOM element itself which is maintained throughout the lifetime of the rendered element. It will be associated to a DOM element via the ref property
 useState creates a state object that can be manipulated live.
 When using a non-boolean as conditional to show/hide or enable/disable parse with Boolean() to be safe.
-If I use React's value prop it ensures that the actual DOM value is always what I set in the prop.
+If I use React's value prop it ensures that the actual DOM value is always what I set in the prop. This is called a controlled input.
+If there's a value but no onChange handler, the input becomes read only, since there's no way to update the value (it's always going to be whatever the value prop set initially). There's a readOnly prop for that situation to avoid the console warning, and a defaultValue in case we need one
 * */
