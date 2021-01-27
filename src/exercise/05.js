@@ -16,10 +16,11 @@ import '../box-styles.css'
 // const mediumBox = <div className="box box--medium" style={{backgroundColor: 'pink', fontStyle: 'italic'}}>medium pink box</div>
 // const largeBox = <div className="box box--large" style={{backgroundColor: 'orange', fontStyle: 'italic'}}>large orange box</div>
 
-function Box({size = 'small', style, ...otherProps}) {
+function Box({size, className = '', style, ...otherProps}) {
+  const sizeClass = size ? `box--${size}` : '';
   return (
     <div
-      className={`box box--${size}`}
+      className={`box ${className} ${sizeClass}`}
       style={{fontStyle: 'italic', ...style}}
       {...otherProps}
     />
