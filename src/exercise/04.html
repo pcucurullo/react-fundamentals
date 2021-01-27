@@ -19,7 +19,7 @@
     const PropTypes = {
       string(props, propName, componentName) {
         if (typeof props[propName] !== 'string') {
-          return new Error(propName + ' should be a string and it´s not!');
+          return new Error(`Hey, ${componentName} needs ${propName} to be a string and it´s not!`);
         }
       },
     }
