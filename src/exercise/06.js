@@ -19,16 +19,18 @@ function UsernameForm({onSubmitUsername}) {
   // 🐨 make sure to associate the label to the input.
   // to do so, set the value of 'htmlFor' prop of the label to the id of input
 
+  const usernameInput = React.useRef(null);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmitUsername(event.target.elements.username.value)
+    onSubmitUsername(usernameInput.current.value);
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="username">Username:</label>
-        <input type="text" id="username"/>
+        <input type="text" id="username" ref={usernameInput}/>
       </div>
       <button type="submit">Submit</button>
     </form>
@@ -41,3 +43,10 @@ function App() {
 }
 
 export default App
+
+/*
+Access form elements via event.target.elements
+The event we receive in the submit handler is synthetic, but contains the nativeEvent.
+Associating labels to the actual input is necessary for screen readers.
+useRef creates an immutable object that saves in current whatever is set initially throughout the lifetime of the rendered element.
+* */
