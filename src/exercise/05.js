@@ -16,16 +16,38 @@ const smallBox = <div className="box box--small" style={{backgroundColor: 'light
 const mediumBox = <div className="box box--medium" style={{backgroundColor: 'pink', fontStyle: 'italic'}}>medium pink box</div>
 const largeBox = <div className="box box--large" style={{backgroundColor: 'orange', fontStyle: 'italic'}}>large orange box</div>
 
+function Box({className, style, children}) {
+  return (
+    <div className={`box ${className}`} style={{fontStyle: 'italic', ...style}}>
+      {children}
+    </div>
+  )
+}
+
+
 function App() {
   return (
     <div>
-      {smallBox}
-      {mediumBox}
-      {largeBox}
+      <Box className="box--small" style={{backgroundColor: 'lightblue'}}>
+        small lightblue box
+      </Box>
+      <Box className="box--medium" style={{backgroundColor: 'pink'}}>
+        medium pink box
+      </Box>
+      <Box className="box--large" style={{backgroundColor: 'orange'}}>
+        large orange box
+      </Box>
     </div>
   )
 }
 
 export default App
 
-// Double curly braces is just object notation inside interpolation
+/*
+
+Double curly braces is just object notation inside interpolation.
+The $0 at the end of the selected dom element in the inspector is actually usable as an object in the console.
+ClassName and style are actually the DOM props for the element.
+
+
+* */
