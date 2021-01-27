@@ -40,7 +40,7 @@ function UsernameForm({onSubmitUsername}) {
         <input type="text" id="username" ref={usernameInput} onChange={handleChange}/>
       </div>
       <p style={{color: 'red'}} role="alert">{error}</p>
-      <button type="submit" disabled={error}>Submit</button>
+      <button type="submit" disabled={Boolean(error)}>Submit</button>
     </form>
   )
 }
@@ -57,4 +57,6 @@ Access form elements via event.target.elements
 The event we receive in the submit handler is synthetic, but contains the nativeEvent.
 Associating labels to the actual input is necessary for screen readers.
 useRef creates an immutable object that saves in current the DOM element itself which is maintained throughout the lifetime of the rendered element. It will be associated to a DOM element via the ref property
+useState creates a state object that can be manipulated live.
+When using a non-boolean as conditional to show/hide or enable/disable parse with Boolean() to be safe.
 * */
