@@ -16,11 +16,13 @@ const smallBox = <div className="box box--small" style={{backgroundColor: 'light
 const mediumBox = <div className="box box--medium" style={{backgroundColor: 'pink', fontStyle: 'italic'}}>medium pink box</div>
 const largeBox = <div className="box box--large" style={{backgroundColor: 'orange', fontStyle: 'italic'}}>large orange box</div>
 
-function Box({className, style, children}) {
+function Box({className = '', style, ...otherProps}) {
   return (
-    <div className={`box ${className}`} style={{fontStyle: 'italic', ...style}}>
-      {children}
-    </div>
+    <div
+      className={`box ${className}`}
+      style={{fontStyle: 'italic', ...style}}
+      {...otherProps}
+    />
   )
 }
 
